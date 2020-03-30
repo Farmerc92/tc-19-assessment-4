@@ -16,25 +16,17 @@ public class SquareArrayAnalyzer {
      * @return true if each `inputArray[i]` has a corresponding `squaredValues[j]` such that `squaredValues[j] == inputArray[i] * inputArray[i]`
      */
     public static Boolean compare(Integer[] inputArray, Integer[] squaredValues) {
-        bubbleSort(inputArray);
-        bubbleSort(squaredValues);
         for(int i = 0; i < inputArray.length; i++){
-            if (inputArray[i]*inputArray[i] !=squaredValues[i] )
+            Boolean check = false;
+            for (int j = 0; j < squaredValues.length; j++) {
+                if (inputArray[i] * inputArray[i] == squaredValues[j]){
+                    check = true;
+                    break;
+                }
+            }
+            if (!check)
                 return false;
         }
         return true;
-    }
-
-    public static Integer[] bubbleSort(Integer[] array){
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                if (array[i] > array[j]){
-                    int temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
-                }
-            }
-        }
-        return array;
     }
 }
